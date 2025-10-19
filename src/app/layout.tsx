@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Oswald } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const oswaldFont = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
 });
 
@@ -25,11 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="grid grid-cols-[1fr_4fr]">
-          <Header />
+      <body className={`${oswaldFont.variable} antialiased`}>
+        <div className="grid grid-cols-[1fr_4fr] font-main">
+          <Sidebar />
           {children}
         </div>
       </body>
