@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Oswald } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
-const oswaldFont = Oswald({
-  variable: "--font-oswald",
+const font = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
@@ -20,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${oswaldFont.variable} antialiased`}>
-        <div className="grid grid-cols-[1fr_4fr] font-main">
+      <body className={`${font.variable} font-main antialiased`}>
+        <div className="grid grid-cols-[1fr_4fr]">
           <Sidebar />
-          {children}
+          <div className="m-16">{children}</div>
         </div>
       </body>
     </html>
