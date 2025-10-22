@@ -1,6 +1,5 @@
 import FlashCardPreview from "@/components/FlashcardPreview";
 import InputComponent from "@/components/InputComponent";
-import Card from "@/daisyUI/card";
 
 export default function HomePage() {
   // Dynamically render
@@ -13,7 +12,6 @@ export default function HomePage() {
         <FlashCardPreview title="Physics" length="10" />
         <FlashCardPreview title="English words" length="21" />
         <FlashCardPreview title="Networking" length="31" />
-        {/* <Card /> */}
       </div>
     </>
   );
