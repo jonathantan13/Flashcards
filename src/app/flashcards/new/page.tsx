@@ -1,6 +1,21 @@
-// This needs to be a client component -- I'm keeping track of the word count
+"use client";
+
+import { ChangeEvent, useState } from "react";
 
 export default function CreateNewCard() {
+  const [titleCount, setTitleCount] = useState("");
+  const [descriptionCount, setDescriptionCount] = useState("");
+
+  function updateTitleCount(e: ChangeEvent<HTMLInputElement>) {
+    // Fix if going over 20, can't delete
+    if (titleCount.length < 20) setTitleCount(e.target.value);
+  }
+
+  function updateDescriptionCount(e: ChangeEvent<HTMLInputElement>) {
+    // Fix if going over 20, can't delete
+    if (descriptionCount.length < 100) setDescriptionCount(e.target.value);
+  }
+
   return (
     <form
       action=""
@@ -11,15 +26,29 @@ export default function CreateNewCard() {
           <label htmlFor="" className="text-2xl font-bold">
             Title
           </label>
-          <input type="text" className="h-8 w-full bg-white" />
-          <p>0/20</p>
+          <input
+            type="text"
+            value={titleCount}
+            onChange={(e) => updateTitleCount(e)}
+            className="h-10 w-full bg-white p-2 text-black"
+          />
+          <p className={titleCount.length >= 20 ? "text-red-600" : ""}>
+            <span className="font-semibold">{titleCount.length}/20</span>
+          </p>
         </div>
         <div className="flex flex-col gap-4">
           <label htmlFor="" className="text-2xl font-bold">
             Description
           </label>
-          <input type="text" className="h-24 w-full bg-white" />
-          0/200
+          <input
+            type="text"
+            value={descriptionCount}
+            onChange={(e) => updateDescriptionCount(e)}
+            className="h-24 w-full bg-white p-2 text-black"
+          />
+          <p className={titleCount.length >= 100 ? "text-red-600" : ""}>
+            <span className="font-semibold">{descriptionCount.length}/100</span>
+          </p>
         </div>
       </div>
       <button className="btn h-12 w-[6rem] btn-primary">Create</button>
