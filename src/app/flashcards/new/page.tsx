@@ -7,13 +7,17 @@ export default function CreateNewCard() {
   const [descriptionCount, setDescriptionCount] = useState("");
 
   function updateTitleCount(e: ChangeEvent<HTMLInputElement>) {
-    // Fix if going over 20, can't delete
-    if (titleCount.length < 20) setTitleCount(e.target.value);
+    const title = e.target.value;
+    const MAX_LENGTH = 20;
+
+    setTitleCount(title.slice(0, MAX_LENGTH));
   }
 
-  function updateDescriptionCount(e: ChangeEvent<HTMLInputElement>) {
-    // Fix if going over 20, can't delete
-    if (descriptionCount.length < 100) setDescriptionCount(e.target.value);
+  function updateDescriptionCount(e: ChangeEvent<HTMLTextAreaElement>) {
+    const description = e.target.value;
+    const MAX_LENGTH = 100;
+
+    setDescriptionCount(description.slice(0, MAX_LENGTH));
   }
 
   return (
@@ -40,8 +44,7 @@ export default function CreateNewCard() {
           <label htmlFor="" className="text-2xl font-bold">
             Description
           </label>
-          <input
-            type="text"
+          <textarea
             value={descriptionCount}
             onChange={(e) => updateDescriptionCount(e)}
             className="h-24 w-full bg-white p-2 text-black"
